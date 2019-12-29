@@ -12,3 +12,4 @@ res = []
 for i in line:
     res.append(en_ru.get(i))
 print(''.join(res))
+input()
