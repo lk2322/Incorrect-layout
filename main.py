@@ -14,10 +14,13 @@ ru_en = {'й': 'q', 'ц': 'w', 'у': 'e', 'к': 'r', 'е': 't', 'н': 'y', 'г':
 
 try:
     line = list(input().lower())
+except KeyboardInterrupt:
+    print('\nВыход')
+except EOFError:
+    print('Конец файла')
+else:
     res = []
     for i in line:
         res.append(en_ru.get(i, ''))
     print(''.join(res).capitalize())
     input()
-except Exception:
-    print('Упс... Произошла ошибка')
