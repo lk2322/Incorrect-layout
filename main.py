@@ -1,4 +1,5 @@
-import sys
+import sys, os, os.path
+import PySide
 from PySide import QtCore, QtGui
 from ui import Ui_Form
 app = QtGui.QApplication(sys.argv)
@@ -6,6 +7,8 @@ Form = QtGui.QWidget()
 ui = Ui_Form()
 ui.setupUi(Form)
 Form.show()
+
+
 
 en_ru = {
     'q': 'й', 'w': 'ц', 'e': 'у', 'r': 'к', 't': 'е', 'y': 'н', 'u': 'г', 'i': 'ш',
@@ -32,12 +35,13 @@ def trans():
     ui.lineEdit_2.setText(final)
     ui.lineEdit_2.setReadOnly(True)
     return final
-    
+
 
 def save():
     line = trans()
     f = open('text.txt', 'w')
     f.write(line)
+    f.close()
 
 ui.pushButton_3.clicked.connect(trans)
 ui.pushButton_2.clicked.connect(save)

@@ -6,13 +6,14 @@
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
-
+import PySide
 from PySide import QtCore, QtGui
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(395, 101)
+        Form.setFixedSize(395, 101)
         self.pushButton_2 = QtGui.QPushButton(Form)
         self.pushButton_2.setGeometry(QtCore.QRect(202, 40, 121, 23))
         self.pushButton_2.setObjectName("pushButton_2")
@@ -39,6 +40,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QtGui.QApplication.translate("Form", "Переводчик", None, QtGui.QApplication.UnicodeUTF8))
+        Form.setWindowIcon(PySide.QtGui.QIcon('2.ico'))        
         self.pushButton_2.setText(QtGui.QApplication.translate("Form", "Сохранить в Txt", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_3.setText(QtGui.QApplication.translate("Form", "Перевести", None, QtGui.QApplication.UnicodeUTF8))
 
