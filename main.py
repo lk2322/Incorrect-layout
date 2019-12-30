@@ -1,3 +1,12 @@
+import sys
+from PySide import QtCore, QtGui
+from ui import Ui_Form
+app = QtGui.QApplication(sys.argv)
+Form = QtGui.QWidget()
+ui = Ui_Form()
+ui.setupUi(Form)
+Form.show()
+
 en_ru = {
     'q': 'й', 'w': 'ц', 'e': 'у', 'r': 'к', 't': 'е', 'y': 'н', 'u': 'г', 'i': 'ш',
     'o': 'щ', 'p': 'з', '[': 'х', ']': 'ъ', '{': 'х', '}': 'ъ', 'a': 'ф', 's': 'ы', 'd': 'в',
@@ -12,15 +21,26 @@ ru_en = {'й': 'q', 'ц': 'w', 'у': 'e', 'к': 'r', 'е': 't', 'н': 'y', 'г':
          'ж': ';:', 'э': '\'"', 'я': 'z', 'ч': 'x', 'с': 'c', 'м': 'v',
          'и': 'b', 'т': 'n', 'ь': 'm', 'б': ',<', 'ю': '.>', ' ': ' ', '.': '/', ',': '?', '?': '&'}
 
-try:
-    line = list(input().lower())
-except KeyboardInterrupt:
-    print('\nВыход')
-except EOFError:
-    print('Конец файла')
-else:
+
+def trans():
+    line = ui.lineEdit.text().lower()
     res = []
     for i in line:
         res.append(en_ru.get(i, ''))
-    print(''.join(res).capitalize())
-    input()
+    final = ''.join(res).capitalize()
+
+    ui.lineEdit_2.setText(final)
+    ui.lineEdit_2.setReadOnly(True)
+    return final
+    
+
+def save():
+    line = trans()
+    f = open('text.txt', 'w')
+    f.write(line)
+
+ui.pushButton_3.clicked.connect(trans)
+ui.pushButton_2.clicked.connect(save)
+
+
+sys.exit(app.exec_())
