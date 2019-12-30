@@ -13,6 +13,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(395, 101)
+        Form.setFixedSize(395, 101)
         self.pushButton_2 = QtGui.QPushButton(Form)
         self.pushButton_2.setGeometry(QtCore.QRect(202, 40, 121, 23))
         self.pushButton_2.setObjectName("pushButton_2")
