@@ -9,7 +9,6 @@
 import PySide2
 from PySide2 import QtWidgets, QtCore, QtGui
 
-
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -42,5 +41,5 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle("Переводчик")
         Form.setWindowIcon(QtGui.QIcon('2.ico'))
-        self.pushButton_2.setText("Сохранить в Txt")
+        self.pushButton_2.setText("Сохранить")
         self.pushButton_3.setText("Перевести")

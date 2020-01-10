@@ -1,5 +1,5 @@
 import sys
-from PySide2.QtWidgets import QApplication, QWidget
+from PySide2.QtWidgets import QApplication, QWidget, QFileDialog
 
 from translate_utils import translate
 from ui import Ui_Form
@@ -17,13 +17,19 @@ def translate_button_handler():
     ui.lineEdit_2.setReadOnly(True)
     return final
 
-
-def save_button_handler():
+def save_button_handler():                                            
     """Сохраняет текст в файл"""
     # TODO возможность выбора файла для сохранения
-    line = translate(ui.lineEdit_2.text())
-    with open('text.txt', 'w') as f:
-        f.write(line)
+    # with open('text.txt', 'w') as f:
+    #    f.write(line)
+    filename, _ = QFileDialog.getSaveFileName(filter=="txt files (.txt);;All Files ()")
+    if filename != "":
+        with open(filename, 'w') as f:
+            text = translate(ui.lineEdit.text().lower())
+            ui.lineEdit_2.setText(text)
+            ui.lineEdit_2.setReadOnly(True)
+            f.write(text)
+            f.close()
 
 
 if __name__ == '__main__':
